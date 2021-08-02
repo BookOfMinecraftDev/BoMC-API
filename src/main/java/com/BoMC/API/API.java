@@ -16,8 +16,11 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.BoMC.API.clans.data.Clan;
+import com.BoMC.API.drops.OreDropsEvent;
+import com.BoMC.API.events.MoldBlockEvent;
 import com.BoMC.API.recipes.GrindstoneCraftEvent;
 import com.BoMC.API.recipes.InitRecipes;
+import com.BoMC.API.recipes.MoldOreEvent;
 
 public class API extends JavaPlugin {
 	
@@ -69,6 +72,15 @@ public class API extends JavaPlugin {
 		
 		// Register grindstone crafting system
 		getServer().getPluginManager().registerEvents(new GrindstoneCraftEvent(), this);
+		
+		// Register ore drop switcher
+		getServer().getPluginManager().registerEvents(new OreDropsEvent(), this);
+		
+		// Register molten ore molding
+		getServer().getPluginManager().registerEvents(new MoldOreEvent(), this);
+		
+		// Register placing mold block
+		getServer().getPluginManager().registerEvents(new MoldBlockEvent(), this);
 		
 		// Get FileConfigurations
 		CONFIG = getConfig();
